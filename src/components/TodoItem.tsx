@@ -5,17 +5,11 @@ import type { Todo } from "@/types/todo";
 
 type TodoItemProps = {
   todo: Todo;
-  onToggle: (id: number) => void;
   onDelete: (id: number) => void;
   onEdit: (id: number, text: string) => void;
 };
 
-export default function TodoItem({
-  todo,
-  onToggle,
-  onDelete,
-  onEdit,
-}: TodoItemProps) {
+export default function TodoItem({ todo, onDelete, onEdit }: TodoItemProps) {
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(todo.text);
 
@@ -32,13 +26,6 @@ export default function TodoItem({
 
   return (
     <li className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3">
-      <input
-        type="checkbox"
-        checked={todo.done}
-        onChange={() => onToggle(todo.id)}
-        className="h-4 w-4 accent-indigo-600"
-      />
-
       {editing ? (
         <>
           <input
@@ -68,13 +55,7 @@ export default function TodoItem({
         </>
       ) : (
         <>
-          <span
-            className={`flex-1 ${
-              todo.done ? "text-slate-400 line-through" : "text-slate-900"
-            }`}
-          >
-            {todo.text}
-          </span>
+          <span className="flex-1 text-slate-900">{todo.text}</span>
           <button
             type="button"
             onClick={() => setEditing(true)}
