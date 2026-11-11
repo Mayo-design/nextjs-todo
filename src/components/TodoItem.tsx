@@ -25,7 +25,7 @@ export default function TodoItem({ todo, onDelete, onEdit }: TodoItemProps) {
   };
 
   return (
-    <li className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3">
+    <li className="flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-3">
       {editing ? (
         <>
           <input
@@ -36,37 +36,37 @@ export default function TodoItem({ todo, onDelete, onEdit }: TodoItemProps) {
               if (e.key === "Enter") save();
               if (e.key === "Escape") cancel();
             }}
-            className="flex-1 rounded border border-slate-300 px-2 py-1 outline-none focus:border-indigo-500"
+            className="flex-1 rounded border border-border bg-background px-2 py-1 text-foreground outline-none focus:border-indigo-500"
           />
           <button
             type="button"
             onClick={save}
-            className="text-sm font-medium text-indigo-600 hover:underline"
+            className="text-sm font-medium text-indigo-400 hover:underline"
           >
             Save
           </button>
           <button
             type="button"
             onClick={cancel}
-            className="text-sm text-slate-500 hover:underline"
+            className="text-sm text-muted hover:underline"
           >
             Cancel
           </button>
         </>
       ) : (
         <>
-          <span className="flex-1 text-slate-900">{todo.text}</span>
+          <span className="flex-1 text-foreground">{todo.text}</span>
           <button
             type="button"
             onClick={() => setEditing(true)}
-            className="text-sm font-medium text-indigo-600 hover:underline"
+            className="text-sm font-medium text-indigo-400 hover:underline"
           >
             Edit
           </button>
           <button
             type="button"
             onClick={() => onDelete(todo.id)}
-            className="text-sm font-medium text-red-600 hover:underline"
+            className="text-sm font-medium text-red-400 hover:underline"
           >
             Delete
           </button>

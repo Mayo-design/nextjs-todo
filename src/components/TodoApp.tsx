@@ -27,7 +27,7 @@ export default function TodoApp() {
       <TodoForm onAdd={addTodo} />
 
       {todos.length === 0 ? (
-        <p className="py-6 text-center text-slate-500">Nothing here yet.</p>
+        <p className="py-6 text-center text-muted">Nothing here yet.</p>
       ) : (
         <ul className="space-y-2">
           {todos.map((todo) => (
@@ -43,5 +43,3 @@ export default function TodoApp() {
     </div>
   );
 }
-
-
